@@ -1,0 +1,157 @@
+/* ===== ANIMATIONS ===== */
+
+/* Pulse dot for hero tag */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Preview bars bounce */
+@keyframes preview-bounce {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.2); }
+}
+
+/* Pop in (insert) */
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.6) translateY(-12px); }
+  70% { transform: scale(1.05) translateY(2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Pop out (delete) */
+@keyframes pop-out {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.6) translateY(-12px); }
+}
+
+/* Slide down (stack push) */
+@keyframes slide-down {
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide up (stack pop) */
+@keyframes slide-up {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+
+/* Slide from right (queue enqueue) */
+@keyframes slide-from-right {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Slide to left (queue dequeue) */
+@keyframes slide-to-left {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-30px); }
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 6px rgba(79,156,249,0.3); }
+  50% { box-shadow: 0 0 20px rgba(79,156,249,0.7); }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Bar swap bounce */
+@keyframes swap-bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  60% { transform: translateY(0); }
+}
+
+/* Node pulse (tree/graph) */
+@keyframes node-pulse {
+  0% { r: 22; }
+  50% { r: 26; }
+  100% { r: 22; }
+}
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Entry animation for page content */
+.page-enter {
+  animation: fade-in 0.35s ease forwards;
+}
+
+/* Glow effects on active elements */
+.glow-blue { animation: pulse-glow 2s ease-in-out infinite; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-elevated) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* Hero preview bars individual delays */
+.preview-bar:nth-child(1) { animation-delay: 0s; height: 60%; }
+.preview-bar:nth-child(2) { animation-delay: 0.15s; height: 90%; }
+.preview-bar:nth-child(3) { animation-delay: 0.3s; height: 40%; }
+.preview-bar:nth-child(4) { animation-delay: 0.45s; height: 75%; }
+.preview-bar:nth-child(5) { animation-delay: 0.6s; height: 55%; }
+.preview-bar:nth-child(6) { animation-delay: 0.75s; height: 100%; }
+.preview-bar:nth-child(7) { animation-delay: 0.9s; height: 30%; }
+.preview-bar:nth-child(8) { animation-delay: 1.05s; height: 85%; }
+
+/* Smooth bar transition override for animations */
+.bar.animating {
+  transition: height 0.08s linear, background-color 0.08s ease;
+}
+
+/* Traversal node appear */
+@keyframes node-appear {
+  from { opacity: 0; transform: scale(0) rotate(-15deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.traversal-node.new {
+  animation: node-appear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Category card hover */
+.category-card, .algo-card {
+  animation: fade-in 0.4s ease;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Graph node drag */
+.graph-node-circle.dragging {
+  filter: drop-shadow(0 0 8px rgba(79,156,249,0.6));
+}
+
+/* Complexity chart bars */
+@keyframes bar-grow {
+  from { height: 0; }
+  to { height: var(--target-height); }
+}
+.complexity-bar-anim {
+  animation: bar-grow 1s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
